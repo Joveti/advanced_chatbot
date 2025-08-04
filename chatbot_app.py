@@ -1,12 +1,13 @@
 import streamlit as st
 import nltk
+
+# --- Always Download NLTK Data at the Very Top ---
+nltk.download('punkt')
+nltk.download('wordnet')
+
 from nltk.stem import WordNetLemmatizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-
-# ---- NLTK Data Download ----
-nltk.download('punkt')
-nltk.download('wordnet')
 
 # --- Pre-computation and Data Loading ---
 @st.cache_data
@@ -54,7 +55,7 @@ def chatbot_response(user_input, sent_tokens):
 
 # --- Streamlit Application Main Function ---
 def main():
-    st.title("Chatbot: Grimm's Fairy Tales (Text-only)")
+    st.title("Chatbot: Grimm's Fairy Tales ")
     st.write("Ask me questions about Grimm's Fairy Tales by typing below.")
 
     sent_tokens = load_and_preprocess_data()
